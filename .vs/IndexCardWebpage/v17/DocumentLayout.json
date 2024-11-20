@@ -41,7 +41,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 922,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Bookmark",
@@ -50,10 +50,6 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
             },
             {
               "$type": "Document",
@@ -91,8 +87,7 @@
               "RelativeToolTip": "Components\\Services\\CardCategoriesService.cs",
               "ViewState": "AQIAAB4AAAAAAAAAAAAuwHcAAAANAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-20T12:17:01.115Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-20T12:17:01.115Z"
             },
             {
               "$type": "Document",
@@ -104,8 +99,7 @@
               "RelativeToolTip": "Components\\Pages\\Learn.razor",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAABNAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-11-20T12:16:48.761Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-20T12:16:48.761Z"
             },
             {
               "$type": "Document",
@@ -117,8 +111,7 @@
               "RelativeToolTip": "Components\\Pages\\EditCategory.razor",
               "ViewState": "AQIAAEcAAAAAAAAAAAAuwFMAAAAUAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-11-20T12:16:37.472Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-20T12:16:37.472Z"
             },
             {
               "$type": "Document",
@@ -130,8 +123,7 @@
               "RelativeToolTip": "Components\\Pages\\NewCategory.razor.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAABAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-20T13:22:38.675Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-20T13:22:38.675Z"
             },
             {
               "$type": "Document",
@@ -143,8 +135,7 @@
               "RelativeToolTip": "Components\\Pages\\Home.razor",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAA/AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-11-20T12:16:14.612Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-20T12:16:14.612Z"
             },
             {
               "$type": "Document",
