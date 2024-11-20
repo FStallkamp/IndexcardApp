@@ -1,0 +1,124 @@
+﻿@page "/edit/{CategoryName}"
+@inject NavigationManager NavigationManager
+@using System.Net.Http.Json
+@rendermode InteractiveServer
+@inject HttpClient httpClient
+@using MudBlazor
+
+
+<h3>Kategorie bearbeiten: @Category?.Name</h3>
+
+@if (CardsError)
+{
+    <div class="popup-content" id="popup" style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 300px; padding: 20px; background-color: white; border: 1px solid #ccc; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); text-align: center;">
+        <div class="popup-content">
+            <p>Es gibt ungespeicherte Änderungen. Möchten Sie die Änderungen speichern oder verwerfen?</p>
+            <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="ConfirmSave">Speichern</MudButton>
+            <MudButton Variant="Variant.Outlined" Color="Color.Secondary" OnClick="DiscardChanges">Verwerfen</MudButton>
+        </div>
+    </div>
+}
+
+
+@if (Category == null)
+{
+    <p>Lade Daten...</p>
+}
+else
+{
+    <MudTextField T="string" @bind-Value="Category.Name" Label="Name der Kategorie" />
+    <MudTextField T="string" @bind-Value="Category.Beschreibung" Label="Beschreibung der Kategorie" />
+    <MudSimpleTable Hover="true" Bordered="true" Style="overflow-x: auto;">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Inhalt</th>
+                <th>Aktion</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var x in indexCards)
+            {
+                if (x.KategorieId == Category.KategorieId)
+                {
+                    <tr>
+                        @if (ShowEditPopUps.ContainsKey(x.Id) && ShowEditPopUps[x.Id])
+                        {
+                            <td><MudTextField T="string" @bind-Value="x.Name" Label="Kartentitel eingeben"></MudTextField></td>
+                            <td><MudTextField T="string" @bind-Value="x.Description" Label="Kartenbeschreibung eingeben"></MudTextField></td>
+                            <td>
+                                <MudButton Variant="Variant.Filled" OnClick="@(() => SaveCard(x))" Color="Color.Warning">Speichern</MudButton>
+                                <MudButton Variant="Variant.Filled" OnClick="@(() => CancelEdit(x))" Color="Color.Error">Abbrechen</MudButton>
+                            </td>
+                        }
+                        else
+                        {
+                            <td>@x.Name</td>
+                            <td>@x.Description</td>
+                            <td><MudButton Variant="Variant.Filled" OnClick="@(() => EditCard(x))" Color="Color.Tertiary">Edit</MudButton></td>
+                        }
+                    </tr>
+                }
+            }
+
+
+        </tbody>
+    </MudSimpleTable>
+
+    <MudButton Color="Color.Primary" OnClick="SaveCategory">Speichern</MudButton>
+    <MudButton Color="Color.Secondary" OnClick="Cancel">Abbrechen</MudButton>
+}
+
+@code {
+    private Dictionary<int, bool> ShowEditPopUps = new Dictionary<int, bool>();
+    private IndexCard localCard = new IndexCard();
+    private void EditCard(IndexCard card)
+    {
+        localCard = card;
+        if (ShowEditPopUps.ContainsKey(card.Id))
+        {
+            ShowEditPopUps[card.Id] = !ShowEditPopUps[card.Id];  // Toggle edit pop-up status
+        }
+        else
+        {
+            ShowEditPopUps[card.Id] = true;
+        }
+    }
+
+    private void CancelEdit(IndexCard card)
+    {   
+        if (ShowEditPopUps.ContainsKey(card.Id))
+        {
+            ShowEditPopUps[card.Id] = !ShowEditPopUps[card.Id];  // Toggle edit pop-up status
+        }
+        else
+        {
+            ShowEditPopUps[card.Id] = true;
+        }
+    }
+
+    private async Task SaveCard(IndexCard card)
+    {
+        // Toggle the pop-up status
+        if (ShowEditPopUps.ContainsKey(card.Id))
+        {
+            ShowEditPopUps[card.Id] = !ShowEditPopUps[card.Id];
+        }
+        else
+        {
+            ShowEditPopUps[card.Id] = true;
+        }
+
+        // Aktualisiere das Element in der Liste, falls notwendig
+        // Blazor erkennt Änderungen automatisch, wenn das Element als Bindung vorhanden ist
+
+        // Sicherstellen, dass StateHasChanged nach der Aktualisierung aufgerufen wird
+        StateHasChanged();  // Das UI wird neu gerendert, um Änderungen an der UI zu berücksichtigen
+    }
+
+    private void ClosePopUp()
+    {
+        CardsError = false;
+    }
+
+}

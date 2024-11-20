@@ -1,0 +1,29 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\IndexCardWebpage\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\IndexCardWebpage.bundle.scp.css",
+      "PackagePath": "staticwebassets\\IndexCardWebpage.bundle.scp.css"
+    },
+    {
+      "Id": "C:\\IndexCardWebpage\\wwwroot\\app.css",
+      "PackagePath": "staticwebassets\\app.css"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.IndexCardWebpage.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.IndexCardWebpage.props",
+      "PackagePath": "build\\IndexCardWebpage.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.IndexCardWebpage.props",
+      "PackagePath": "buildMultiTargeting\\IndexCardWebpage.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.IndexCardWebpage.props",
+      "PackagePath": "buildTransitive\\IndexCardWebpage.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

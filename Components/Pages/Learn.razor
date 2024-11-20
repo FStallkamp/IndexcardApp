@@ -1,0 +1,67 @@
+﻿@page "/{CategoryName}"
+@inject NavigationManager NavigationManager
+@using System.Net.Http.Json
+@rendermode InteractiveServer
+@inject HttpClient httpClient
+@using MudBlazor
+
+<!-- Anzeige der Kategorie und Kartenfortschritt rechts oben -->
+<MudText Typo="Typo.h6" Align="Align.Right" Style="position: absolute; right: 2%; top: 2%; font-size: 1.2rem; color: #6c757d;">
+    Kategorie @CategoryName
+</MudText>
+
+<MudText Typo="Typo.h6" Align="Align.Right" Style="position: absolute; right: 2%;margin-top: 0.5%; top: 7%; font-size: 1.0rem; color: #28a745;">
+    Du musst noch @cardCounter Karten lernen
+</MudText>
+
+<!-- Lernkartenbereich -->
+<div style="margin-top: 0%; padding: 2% 5%;">
+    @if (cardCounter != 0)
+    {
+        @if (StepTwo)
+        {
+            <div>
+                <MudText Typo="Typo.h4">Titel der Karte: @currentCard.Name</MudText>
+                <br />
+                <MudText Typo="Typo.h5">Korrekte Lösung: </MudText> <MudText Style="color: #28a745;" Typo="Typo.h5">@currentCard.Description</MudText>
+                <br />
+                <MudTextField T="string" Disabled Label="Keine Eingabe" Variant="Variant.Filled" Size="Size.Large" @bind-Value="inputUser" AutoGrow HelperText="Deine Lösung:" />
+                <br />
+                <div style="display: flex; justify-content: flex-start; margin-top: 10px;">
+                    <MudButton Color="Color.Success" Variant="Variant.Filled" Size="Size.Large" OnClick="@(() => CorrectAnswer(currentCard))">
+                        Richtig
+                    </MudButton>
+                    <MudButton Style="margin-left: 2.5%" Color="Color.Error" Variant="Variant.Filled" Size="Size.Large" OnClick="WrongAnswer">
+                        Falsch
+                    </MudButton>
+                </div>
+            </div>
+        }
+        else
+        {
+            <div>
+                <MudText Typo="Typo.h4">Titel der Karte: @currentCard.Name</MudText>
+                <MudDivider />
+                <MudTextField T="string" Typo="Typo.h5" Label="Deine Lösung" Variant="Variant.Filled" Size="Size.Large" @bind-Value="inputUser" AutoGrow HelperText="Gib hier deine Lösung ein" />
+                <br />
+                <MudButton Color="Color.Inherit" Variant="Variant.Filled" Size="Size.Large" OnClick="@(() => StartStepTwo(randomOrder))">
+                    Weiter
+                </MudButton>
+            </div>
+        }
+    }
+    else
+    {
+        <div>
+            <MudText Typo="Typo.h5" Align="Align.Left">Du hast erfolgreich alle Karten gelernt</MudText>
+            <br />
+            <MudButton Color="Color.Success" Variant="Variant.Filled" Size="Size.Large" Href="/">
+                Zurück zur Homepage
+            </MudButton>
+        </div>
+    }
+</div>
+@code {
+
+}
+    

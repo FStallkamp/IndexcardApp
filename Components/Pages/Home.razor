@@ -1,0 +1,63 @@
+﻿@page "/"
+@using MudBlazor
+@inject IDialogService DialogService
+@inject NavigationManager NavigationManager
+@rendermode InteractiveServer
+<PageTitle>Karteikarten-Lernsystem</PageTitle>
+ 
+<MudButton Href="new" Variant="Variant.Filled" Size="Size.Large" Color="Color.Primary">
+        Kategorie erstellen
+</MudButton>
+
+
+<MudGrid>
+    @if (_categories == null)
+    {
+        <MudItem xs="12">
+            <MudText Typo="Typo.h6">Lade Kategorien...</MudText>
+        </MudItem>
+    }
+    else if (!_categories.Any())
+    {
+        <MudItem xs="12">
+            <MudText Typo="Typo.h6">Keine Kategorien gefunden.</MudText>
+        </MudItem>
+    }
+    else
+    {
+        @foreach (var category in _categories)
+        {
+            <MudItem xs="12" sm="6" md="4">
+                <MudCard>
+                    <MudCardHeader>
+                        <MudText Typo="Typo.h6">@category.Name</MudText>
+                    </MudCardHeader>
+                    <MudCardContent>
+                        <MudText>@category.Beschreibung</MudText>
+                    </MudCardContent>
+                    <MudCardActions>
+                        <MudButton Color="Color.Primary" OnClick="@(() => LearnCategory(category))">
+                            Lernen
+                        </MudButton>
+                        <MudButton Color="Color.Warning" OnClick="@(() => EditCategory(category))">
+                            Bearbeiten
+                        </MudButton>
+                    </MudCardActions>
+                </MudCard>
+            </MudItem>
+        }
+    }
+    </MudGrid>
+
+@code {
+    private void EditCategory(CardCategories category)
+    {
+        NavigationManager.NavigateTo($"/edit/{category.Name}");
+    }
+
+    private void LearnCategory(CardCategories category)
+    {
+        NavigationManager.NavigateTo($"/{category.Name}");
+    }
+
+    }

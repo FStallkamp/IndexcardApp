@@ -1,0 +1,31 @@
+﻿@inherits LayoutComponentBase
+
+@* Required *@
+<MudThemeProvider />
+<MudPopoverProvider />
+
+@* Needed for dialogs *@
+<MudDialogProvider />
+
+@* Needed for snackbars *@
+<MudSnackbarProvider />
+
+<MudLayout>
+    <MudAppBar Elevation="1">
+        <a href="/" class="ml-3 white-text" style="color:white">
+            <MudText Typo="Typo.h5">Lernapp</MudText>
+        </a>
+    </MudAppBar>
+    <MudMainContent Class="mt-16 pa-4" Style="margin-left: 25px">
+        @Body
+    </MudMainContent>
+</MudLayout>
+
+@code {
+    private bool _drawerOpen = true;
+
+    private void DrawerToggle()
+    {
+        _drawerOpen = !_drawerOpen;
+    }
+}

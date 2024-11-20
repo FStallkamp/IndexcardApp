@@ -1,0 +1,26 @@
+﻿@using MudBlazor
+@using IndexCardWebpage.Components.Dialogs
+@rendermode InteractiveServer
+@inject NavigationManager NavigationManager
+@inject IDialogService DialogService
+
+
+<MudDialog MaxWidth="MaxWidth.Medium" FullWidth="true" Class="fixed-width-dialog">
+    <DialogContent>
+        <MudGrid Class="fixed-width-grid">
+            <MudItem xs="12" sm="12" Style="margin-top: 1rem; margin-left: 85px; margin-right: 85px" Class="fixed-width-grid">
+                <MudTextField T="string" @bind-Value="@Title" Label="Titel der Karte eingeben"></MudTextField>
+            </MudItem>
+            <MudItem xs="12" sm="12" Style="margin-top: 1rem; margin-left: 85px; margin-right: 85px" Class="fixed-width-grid">
+                <MudTextField T="string" @bind-Value="@Description" Label="Beschreibung der Karte eingeben"></MudTextField>
+            </MudItem>
+        </MudGrid>
+    </DialogContent>
+    <DialogActions>
+        <MudButton OnClick="Cancel" Variant="Variant.Outlined" Color="Color.Secondary">Abbrechen</MudButton>
+        <MudButton OnClick="Submit" Variant="Variant.Filled" Color="Color.Primary">Auswählen</MudButton>
+    </DialogActions>
+</MudDialog>
+
+    
+       
