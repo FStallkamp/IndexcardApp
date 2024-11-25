@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("IndexCardWebpage")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5c74039fecababb33373168527a491ee2565caa8")]
 [assembly: System.Reflection.AssemblyProductAttribute("IndexCardWebpage")]
 [assembly: System.Reflection.AssemblyTitleAttribute("IndexCardWebpage")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

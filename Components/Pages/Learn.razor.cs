@@ -61,6 +61,7 @@ namespace IndexCardWebpage.Components.Pages
                 .OrderBy(x => rnd.Next())  // Zufällig ordnen
                 .ToList();
             currentCard = randomOrder.FirstOrDefault();
+            inputUser = "";
             StepTwo = false;
         }
 
@@ -69,6 +70,7 @@ namespace IndexCardWebpage.Components.Pages
             cardCounter--;
             randomOrder.Remove(oldCard);
             currentCard = randomOrder.FirstOrDefault();
+            inputUser = "";
             StepTwo = false;
         }
 

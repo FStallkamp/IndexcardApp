@@ -145,3 +145,4 @@ C:\IndexCardWebpage\obj\Debug\net8.0\ref\IndexCardWebpage.dll
 C:\IndexCardWebpage\bin\Debug\net8.0\MudBlazor.ThemeManager.dll
 C:\IndexCardWebpage\obj\Debug\net8.0\scopedcss\Components\Pages\EditCategory.razor.rz.scp.css
 C:\IndexCardWebpage\obj\Debug\net8.0\scopedcss\projectbundle\IndexCardWebpage.bundle.scp.css
+C:\IndexCardWebpage\obj\Debug\net8.0\IndexCardWebpage.sourcelink.json

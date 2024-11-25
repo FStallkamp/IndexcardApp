@@ -68,7 +68,7 @@ namespace IndexCardWebpage.Components.Pages
             bool hasChanges = localCards.Any(c =>
                 c.Name != indexCards.FirstOrDefault(ic => ic.Id == c.Id)?.Name ||
                 c.Description != indexCards.FirstOrDefault(ic => ic.Id == c.Id)?.Description);
-
+           
             if (hasChanges)
             {
                 // Popup anzeigen
