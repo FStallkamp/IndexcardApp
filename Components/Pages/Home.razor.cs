@@ -8,20 +8,13 @@ using System.Text;
 
 namespace IndexCardWebpage.Components.Pages
 {
-	public partial class Home
-	{
+    public partial class Home
+    {
         [Inject]
         CardCategoriesService CardCategoriesService { get; set; }
 
-        
-		public Home()
-		{
-			 
-		}
-        public async Task OpenCategoryDialog()
+        public Home()
         {
-            
-
         }
 
         private List<CardCategories> _categories;
@@ -39,6 +32,5 @@ namespace IndexCardWebpage.Components.Pages
                 _categories = new List<CardCategories>(); // Leere Liste als Fallback
             }
         }
-
     }
 }

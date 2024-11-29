@@ -1458,23 +1458,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\fst\\.nuget\\packages\\": {},
+    "C:\\Users\\fm\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\IndexCardWebpage\\IndexCardWebpage.csproj",
+      "projectUniqueName": "C:\\Users\\fm\\IndexcardApp\\IndexCardWebpage.csproj",
       "projectName": "IndexCardWebpage",
-      "projectPath": "C:\\IndexCardWebpage\\IndexCardWebpage.csproj",
-      "packagesPath": "C:\\Users\\fst\\.nuget\\packages\\",
-      "outputPath": "C:\\IndexCardWebpage\\obj\\",
+      "projectPath": "C:\\Users\\fm\\IndexcardApp\\IndexCardWebpage.csproj",
+      "packagesPath": "C:\\Users\\fm\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\fm\\IndexcardApp\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\fst\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\fm\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -1484,9 +1484,7 @@
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "C:\\Program Files\\dotnet\\library-packs": {},
-        "https://api.nuget.org/v3/index.json": {},
-        "https://packages.wilms.com/repository/baget/index.json": {},
-        "https://packages.wilms.com/repository/nuget.org-proxy/index.json": {}
+        "https://packages.wilms.com/repository/nuget-group/index.json": {}
       },
       "frameworks": {
         "net8.0": {
@@ -1541,7 +1539,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

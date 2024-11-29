@@ -4,52 +4,111 @@
 @inject NavigationManager NavigationManager
 @rendermode InteractiveServer
 <PageTitle>Karteikarten-Lernsystem</PageTitle>
- 
-<MudButton Href="new" Variant="Variant.Filled" Size="Size.Large" Color="Color.Primary">
-        Kategorie erstellen
-</MudButton>
 
+<MudContainer MaxWidth="MaxWidth.Medium">
+    <MudCard Class="header-card mb-4">
+        <MudCardHeader>
+            <MudText Typo="Typo.h4">Willkommen zum Karteikarten-Lernsystem</MudText>
+        </MudCardHeader>
+        <MudCardContent>
+            <MudButton Variant="Variant.Filled" Size="Size.Large" Color="Color.Success" Class="mr-2" OnClick="NavigateToRandomLearnPage">
+                Lernen
+            </MudButton>
+            <MudButton Href="new" Variant="Variant.Filled" Size="Size.Large" Color="Color.Primary">
+                Kategorie erstellen
+            </MudButton>
+        </MudCardContent>
+    </MudCard>
 
-<MudGrid>
-    @if (_categories == null)
-    {
-        <MudItem xs="12">
-            <MudText Typo="Typo.h6">Lade Kategorien...</MudText>
-        </MudItem>
-    }
-    else if (!_categories.Any())
-    {
-        <MudItem xs="12">
-            <MudText Typo="Typo.h6">Keine Kategorien gefunden.</MudText>
-        </MudItem>
-    }
-    else
-    {
-        @foreach (var category in _categories)
+    <MudGrid>
+        @if (_categories == null)
         {
-            <MudItem xs="12" sm="6" md="4">
-                <MudCard>
-                    <MudCardHeader>
-                        <MudText Typo="Typo.h6">@category.Name</MudText>
-                    </MudCardHeader>
-                    <MudCardContent>
-                        <MudText>@category.Beschreibung</MudText>
-                    </MudCardContent>
-                    <MudCardActions>
-                        <MudButton Color="Color.Primary" OnClick="@(() => LearnCategory(category))">
-                            Lernen
-                        </MudButton>
-                        <MudButton Color="Color.Warning" OnClick="@(() => EditCategory(category))">
-                            Bearbeiten
-                        </MudButton>
-                    </MudCardActions>
-                </MudCard>
+            <MudItem xs="12">
+                <MudText Typo="Typo.h6">Lade Kategorien...</MudText>
             </MudItem>
         }
-    }
+        else if (!_categories.Any())
+        {
+            <MudItem xs="12">
+                <MudText Typo="Typo.h6">Keine Kategorien gefunden.</MudText>
+            </MudItem>
+        }
+        else
+        {
+            @foreach (var category in _categories)
+            {
+                <MudItem xs="12" sm="6" md="4">
+                    <MudCard Class="card-equal-height category-card">
+                        <MudCardHeader>
+                            <MudText Typo="Typo.h6" Class="truncate" Title="@category.Name">
+                                @(category.Name.Length > 16 ? category.Name.Substring(0, 16) + "..." : category.Name)
+                            </MudText>
+                        </MudCardHeader>
+                        <MudCardContent>
+                            <MudText Class="description" Title="@category.Beschreibung">
+                                @((MarkupString)SplitAt(category.Beschreibung, 24, 100))
+                            </MudText>
+                        </MudCardContent>
+                        <MudCardActions>
+                            <MudButton Color="Color.Primary" OnClick="@(() => LearnCategory(category))">
+                                Lernen
+                            </MudButton>
+                            <MudButton Color="Color.Warning" OnClick="@(() => EditCategory(category))">
+                                Bearbeiten
+                            </MudButton>
+                        </MudCardActions>
+                    </MudCard>
+                </MudItem>
+            }
+        }
     </MudGrid>
+</MudContainer>
+
+<style>
+    .header-card {
+        padding: 16px;
+        background-color: #f5f5f5;
+    }
+
+    .card-equal-height {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+
+        .card-equal-height .MudCardContent {
+            flex-grow: 1;
+        }
+
+    .truncate {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .description {
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .category-card {
+        transition: background-color 1.0s ease;
+    }
+
+        .category-card:hover {
+            background-color: #e0e0e0;
+        }
+</style>
 
 @code {
+    private void NavigateToRandomLearnPage()
+    {
+        NavigationManager.NavigateTo("/learn/all");
+    }
+
     private void EditCategory(CardCategories category)
     {
         NavigationManager.NavigateTo($"/edit/{category.Name}");
@@ -57,7 +116,31 @@
 
     private void LearnCategory(CardCategories category)
     {
-        NavigationManager.NavigateTo($"/{category.Name}");
+        NavigationManager.NavigateTo($"/learn/{category.Name}");
     }
 
+    public MarkupString SplitAt(string str, int interval, int maxInterval)
+    {
+        if (string.IsNullOrEmpty(str) || interval <= 0 || maxInterval <= 0)
+            return new MarkupString(str);
+
+        var result = new List<string>();
+        int start = 0;
+
+        while (start < str.Length)
+        {
+            int end = Math.Min(start + interval, str.Length);
+            int nextSpace = str.IndexOf(' ', end);
+
+            if (nextSpace == -1 || nextSpace > start + maxInterval)
+            {
+                nextSpace = Math.Min(start + maxInterval, str.Length);
+            }
+
+            result.Add(str.Substring(start, nextSpace - start));
+            start = nextSpace + 1;
+        }
+
+        return new MarkupString(string.Join("<br />", result));
     }
+}

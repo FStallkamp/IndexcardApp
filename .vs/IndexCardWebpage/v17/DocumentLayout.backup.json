@@ -1,0 +1,266 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\fm\\IndexcardApp\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{5115469B-CE79-4937-BD4A-B08F9F6E5219}|IndexCardWebpage.csproj|c:\\users\\fm\\indexcardapp\\components\\pages\\home.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{5115469B-CE79-4937-BD4A-B08F9F6E5219}|IndexCardWebpage.csproj|solutionrelative:components\\pages\\home.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5115469B-CE79-4937-BD4A-B08F9F6E5219}|IndexCardWebpage.csproj|c:\\users\\fm\\indexcardapp\\components\\pages\\learn.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{5115469B-CE79-4937-BD4A-B08F9F6E5219}|IndexCardWebpage.csproj|solutionrelative:components\\pages\\learn.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5115469B-CE79-4937-BD4A-B08F9F6E5219}|IndexCardWebpage.csproj|c:\\users\\fm\\indexcardapp\\components\\pages\\home.razor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5115469B-CE79-4937-BD4A-B08F9F6E5219}|IndexCardWebpage.csproj|solutionrelative:components\\pages\\home.razor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5115469B-CE79-4937-BD4A-B08F9F6E5219}|IndexCardWebpage.csproj|c:\\users\\fm\\indexcardapp\\components\\pages\\editcategory.razor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5115469B-CE79-4937-BD4A-B08F9F6E5219}|IndexCardWebpage.csproj|solutionrelative:components\\pages\\editcategory.razor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5115469B-CE79-4937-BD4A-B08F9F6E5219}|IndexCardWebpage.csproj|c:\\users\\fm\\indexcardapp\\components\\dialogs\\newcarddialog.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{5115469B-CE79-4937-BD4A-B08F9F6E5219}|IndexCardWebpage.csproj|solutionrelative:components\\dialogs\\newcarddialog.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5115469B-CE79-4937-BD4A-B08F9F6E5219}|IndexCardWebpage.csproj|c:\\users\\fm\\indexcardapp\\components\\pages\\learn.razor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5115469B-CE79-4937-BD4A-B08F9F6E5219}|IndexCardWebpage.csproj|solutionrelative:components\\pages\\learn.razor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5115469B-CE79-4937-BD4A-B08F9F6E5219}|IndexCardWebpage.csproj|c:\\users\\fm\\indexcardapp\\components\\pages\\newcategory.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{5115469B-CE79-4937-BD4A-B08F9F6E5219}|IndexCardWebpage.csproj|solutionrelative:components\\pages\\newcategory.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5115469B-CE79-4937-BD4A-B08F9F6E5219}|IndexCardWebpage.csproj|c:\\users\\fm\\indexcardapp\\components\\pages\\newcategory.razor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5115469B-CE79-4937-BD4A-B08F9F6E5219}|IndexCardWebpage.csproj|solutionrelative:components\\pages\\newcategory.razor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5115469B-CE79-4937-BD4A-B08F9F6E5219}|IndexCardWebpage.csproj|c:\\users\\fm\\indexcardapp\\components\\pages\\editcategory.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{5115469B-CE79-4937-BD4A-B08F9F6E5219}|IndexCardWebpage.csproj|solutionrelative:components\\pages\\editcategory.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5115469B-CE79-4937-BD4A-B08F9F6E5219}|IndexCardWebpage.csproj|c:\\users\\fm\\indexcardapp\\components\\pages\\error.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{5115469B-CE79-4937-BD4A-B08F9F6E5219}|IndexCardWebpage.csproj|solutionrelative:components\\pages\\error.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5115469B-CE79-4937-BD4A-B08F9F6E5219}|IndexCardWebpage.csproj|c:\\users\\fm\\indexcardapp\\components\\services\\indexcardservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5115469B-CE79-4937-BD4A-B08F9F6E5219}|IndexCardWebpage.csproj|solutionrelative:components\\services\\indexcardservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5115469B-CE79-4937-BD4A-B08F9F6E5219}|IndexCardWebpage.csproj|c:\\users\\fm\\indexcardapp\\cardcategories.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5115469B-CE79-4937-BD4A-B08F9F6E5219}|IndexCardWebpage.csproj|solutionrelative:cardcategories.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5115469B-CE79-4937-BD4A-B08F9F6E5219}|IndexCardWebpage.csproj|c:\\users\\fm\\indexcardapp\\components\\dialogs\\newcarddialog.razor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5115469B-CE79-4937-BD4A-B08F9F6E5219}|IndexCardWebpage.csproj|solutionrelative:components\\dialogs\\newcarddialog.razor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5115469B-CE79-4937-BD4A-B08F9F6E5219}|IndexCardWebpage.csproj|c:\\users\\fm\\indexcardapp\\components\\services\\cardcategoriesservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5115469B-CE79-4937-BD4A-B08F9F6E5219}|IndexCardWebpage.csproj|solutionrelative:components\\services\\cardcategoriesservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 922,
+          "SelectedChildIndex": 13,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "NewCardDialog.razor",
+              "DocumentMoniker": "C:\\Users\\fm\\IndexcardApp\\Components\\Dialogs\\NewCardDialog.razor",
+              "RelativeDocumentMoniker": "Components\\Dialogs\\NewCardDialog.razor",
+              "ToolTip": "C:\\Users\\fm\\IndexcardApp\\Components\\Dialogs\\NewCardDialog.razor",
+              "RelativeToolTip": "Components\\Dialogs\\NewCardDialog.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-11-29T13:15:01.317Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "NewCategory.razor.cs",
+              "DocumentMoniker": "C:\\Users\\fm\\IndexcardApp\\Components\\Pages\\NewCategory.razor.cs",
+              "RelativeDocumentMoniker": "Components\\Pages\\NewCategory.razor.cs",
+              "ToolTip": "C:\\Users\\fm\\IndexcardApp\\Components\\Pages\\NewCategory.razor.cs",
+              "RelativeToolTip": "Components\\Pages\\NewCategory.razor.cs",
+              "ViewState": "AgIAADgAAAAAAAAAAAAgwGIAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-29T12:50:41.175Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Error.razor",
+              "DocumentMoniker": "C:\\Users\\fm\\IndexcardApp\\Components\\Pages\\Error.razor",
+              "RelativeDocumentMoniker": "Components\\Pages\\Error.razor",
+              "ToolTip": "C:\\Users\\fm\\IndexcardApp\\Components\\Pages\\Error.razor",
+              "RelativeToolTip": "Components\\Pages\\Error.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-11-29T12:49:17.352Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "NewCardDialog.razor.cs",
+              "DocumentMoniker": "C:\\Users\\fm\\IndexcardApp\\Components\\Dialogs\\NewCardDialog.razor.cs",
+              "RelativeDocumentMoniker": "Components\\Dialogs\\NewCardDialog.razor.cs",
+              "ToolTip": "C:\\Users\\fm\\IndexcardApp\\Components\\Dialogs\\NewCardDialog.razor.cs",
+              "RelativeToolTip": "Components\\Dialogs\\NewCardDialog.razor.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-29T11:47:33.386Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "CardCategoriesService.cs",
+              "DocumentMoniker": "C:\\Users\\fm\\IndexcardApp\\Components\\Services\\CardCategoriesService.cs",
+              "RelativeDocumentMoniker": "Components\\Services\\CardCategoriesService.cs",
+              "ToolTip": "C:\\Users\\fm\\IndexcardApp\\Components\\Services\\CardCategoriesService.cs",
+              "RelativeToolTip": "Components\\Services\\CardCategoriesService.cs",
+              "ViewState": "AgIAAGoAAAAAAAAAAAAiwHIAAAA2AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-29T11:01:13.089Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "CardCategories.cs",
+              "DocumentMoniker": "C:\\Users\\fm\\IndexcardApp\\CardCategories.cs",
+              "RelativeDocumentMoniker": "CardCategories.cs",
+              "ToolTip": "C:\\Users\\fm\\IndexcardApp\\CardCategories.cs",
+              "RelativeToolTip": "CardCategories.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-29T11:01:01.805Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "IndexCardService.cs",
+              "DocumentMoniker": "C:\\Users\\fm\\IndexcardApp\\Components\\Services\\IndexCardService.cs",
+              "RelativeDocumentMoniker": "Components\\Services\\IndexCardService.cs",
+              "ToolTip": "C:\\Users\\fm\\IndexcardApp\\Components\\Services\\IndexCardService.cs",
+              "RelativeToolTip": "Components\\Services\\IndexCardService.cs",
+              "ViewState": "AgIAACoAAAAAAAAAAAAYwD8AAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-29T08:54:41.073Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "NewCategory.razor",
+              "DocumentMoniker": "C:\\Users\\fm\\IndexcardApp\\Components\\Pages\\NewCategory.razor",
+              "RelativeDocumentMoniker": "Components\\Pages\\NewCategory.razor",
+              "ToolTip": "C:\\Users\\fm\\IndexcardApp\\Components\\Pages\\NewCategory.razor",
+              "RelativeToolTip": "Components\\Pages\\NewCategory.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB8AAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-11-29T08:12:43.798Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Learn.razor.cs",
+              "DocumentMoniker": "C:\\Users\\fm\\IndexcardApp\\Components\\Pages\\Learn.razor.cs",
+              "RelativeDocumentMoniker": "Components\\Pages\\Learn.razor.cs",
+              "ToolTip": "C:\\Users\\fm\\IndexcardApp\\Components\\Pages\\Learn.razor.cs",
+              "RelativeToolTip": "Components\\Pages\\Learn.razor.cs",
+              "ViewState": "AgIAAD8AAAAAAAAAAAAAAFkAAAAcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-29T08:08:45.593Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Learn.razor",
+              "DocumentMoniker": "C:\\Users\\fm\\IndexcardApp\\Components\\Pages\\Learn.razor",
+              "RelativeDocumentMoniker": "Components\\Pages\\Learn.razor",
+              "ToolTip": "C:\\Users\\fm\\IndexcardApp\\Components\\Pages\\Learn.razor",
+              "RelativeToolTip": "Components\\Pages\\Learn.razor",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAGwAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-11-29T08:08:41.478Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Home.razor.cs",
+              "DocumentMoniker": "C:\\Users\\fm\\IndexcardApp\\Components\\Pages\\Home.razor.cs",
+              "RelativeDocumentMoniker": "Components\\Pages\\Home.razor.cs",
+              "ToolTip": "C:\\Users\\fm\\IndexcardApp\\Components\\Pages\\Home.razor.cs",
+              "RelativeToolTip": "Components\\Pages\\Home.razor.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-28T10:21:29.24Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Home.razor",
+              "DocumentMoniker": "C:\\Users\\fm\\IndexcardApp\\Components\\Pages\\Home.razor",
+              "RelativeDocumentMoniker": "Components\\Pages\\Home.razor",
+              "ToolTip": "C:\\Users\\fm\\IndexcardApp\\Components\\Pages\\Home.razor",
+              "RelativeToolTip": "Components\\Pages\\Home.razor",
+              "ViewState": "AgIAAFQAAAAAAAAAAAAAAHYAAABAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-11-28T10:20:01.538Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "EditCategory.razor.cs",
+              "DocumentMoniker": "C:\\Users\\fm\\IndexcardApp\\Components\\Pages\\EditCategory.razor.cs",
+              "RelativeDocumentMoniker": "Components\\Pages\\EditCategory.razor.cs",
+              "ToolTip": "C:\\Users\\fm\\IndexcardApp\\Components\\Pages\\EditCategory.razor.cs",
+              "RelativeToolTip": "Components\\Pages\\EditCategory.razor.cs",
+              "ViewState": "AgIAAAcAAAAAAAAAAAA3wA4AAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-22T13:02:27.773Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "EditCategory.razor",
+              "DocumentMoniker": "C:\\Users\\fm\\IndexcardApp\\Components\\Pages\\EditCategory.razor",
+              "RelativeDocumentMoniker": "Components\\Pages\\EditCategory.razor",
+              "ToolTip": "C:\\Users\\fm\\IndexcardApp\\Components\\Pages\\EditCategory.razor",
+              "RelativeToolTip": "Components\\Pages\\EditCategory.razor",
+              "ViewState": "AgIAAHsAAAAAAAAAAAAAAHkAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-11-20T12:16:37.472Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

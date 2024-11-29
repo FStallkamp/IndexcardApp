@@ -3,41 +3,46 @@
 @rendermode InteractiveServer
 @inject HttpClient httpClient
 @using MudBlazor
-<h3>Neue Kategorie</h3>
- 
+
+<h3>Erstelle eine neue Kategorie</h3>
+
 <MudDialogProvider />
 
-<MudTextField T="string" @bind-Value="@Title" Label="Titel der Kategorie eingeben" Typo="Typo.h5"></MudTextField>
-<MudTextField T="string" @bind-Value="@Description" Label="Beschreibung der Kategorie eingeben" Typo="Typo.h5"></MudTextField>
+<MudTextField T="string" @bind-Value="@Title" Label="Titel der Kategorie eingeben" Typo="Typo.h5" Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.Title"></MudTextField>
+<MudTextField T="string" @bind-Value="@Description" Label="Beschreibung der Kategorie eingeben" Typo="Typo.h5" Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.Description"></MudTextField>
 
-<MudButton Variant="Variant.Filled" OnClick="OpenDialog" Color="Color.Tertiary">
-    Erstellen
+<MudButton Variant="Variant.Filled" OnClick="OpenDialog" Color="Color.Primary" Class="mt-2">
+    <MudIcon Icon="@Icons.Material.Filled.Add" /> Erstellen einer Karteikarte
 </MudButton>
 
-<MudSimpleTable Hover="true" Bordered="true" Style="overflow-x: auto;">
-    <thead>
-        <tr>
-             <th>Name</th>
-             <th>Inhalt</th>
-        </tr>
-    </thead>
-    <tbody>
-           @foreach (var x in Cards)
-           {
-                if (x.KategorieId == KategorieID )
+<MudPaper Elevation="4" Class="mt-4 p-4">
+    <MudSimpleTable Hover="true" Bordered="true" Style="overflow-x: auto;">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Inhalt</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var x in Cards)
+            {
+                if (x.KategorieId == KategorieID)
                 {
                     <tr>
                         <td>@x.Name</td>
                         <td>@x.Description</td>
-                    <!--   <td><MudButton Variant="Variant.Filled" OnClick="@(() => Edit(x))" Color="Color.Tertiary">Edit</MudButton></td> -->
+                        <!-- <td><MudButton Variant="Variant.Filled" OnClick="@(() => Edit(x))" Color="Color.Tertiary">Edit</MudButton></td> -->
                     </tr>
                 }
-           }
-    </tbody>
-</MudSimpleTable>
+            }
+        </tbody>
+    </MudSimpleTable>
+</MudPaper>
 
-<MudButton Variant="Variant.Filled" Href="/" OnClick="@Save" Color="Color.Tertiary">Speichern</MudButton>
+<MudButton Variant="Variant.Filled" Href="/" OnClick="@Save" Color="Color.Primary" Class="mt-4">
+    <MudIcon Icon="@Icons.Material.Filled.Save" /> Speichern
+</MudButton>
 
-@code {
-   
-}
+<MudButton Variant="Variant.Filled" Href="/" Color="Color.Secondary" Class="mt-4">
+    <MudIcon Icon="@Icons.Material.Filled.Cancel" /> Abbrechen
+</MudButton>

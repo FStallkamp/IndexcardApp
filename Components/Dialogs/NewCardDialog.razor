@@ -4,23 +4,23 @@
 @inject NavigationManager NavigationManager
 @inject IDialogService DialogService
 
-
 <MudDialog MaxWidth="MaxWidth.Medium" FullWidth="true" Class="fixed-width-dialog">
     <DialogContent>
         <MudGrid Class="fixed-width-grid">
             <MudItem xs="12" sm="12" Style="margin-top: 1rem; margin-left: 85px; margin-right: 85px" Class="fixed-width-grid">
-                <MudTextField T="string" @bind-Value="@Title" Label="Titel der Karte eingeben"></MudTextField>
+                <MudTextField T="string" @bind-Value="@Title" Label="Titel der Karteikarte eingeben" Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.Title"></MudTextField>
             </MudItem>
             <MudItem xs="12" sm="12" Style="margin-top: 1rem; margin-left: 85px; margin-right: 85px" Class="fixed-width-grid">
-                <MudTextField T="string" @bind-Value="@Description" Label="Beschreibung der Karte eingeben"></MudTextField>
+                <MudTextField T="string" @bind-Value="@Description" Label="Beschreibung der Karteikarte eingeben" Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.Description"></MudTextField>
             </MudItem>
         </MudGrid>
     </DialogContent>
     <DialogActions>
-        <MudButton OnClick="Cancel" Variant="Variant.Outlined" Color="Color.Secondary">Abbrechen</MudButton>
-        <MudButton OnClick="Submit" Variant="Variant.Filled" Color="Color.Primary">Auswählen</MudButton>
+        <MudButton OnClick="Cancel" Variant="Variant.Outlined" Color="Color.Secondary">
+            <MudIcon Icon="@Icons.Material.Filled.Cancel" /> Abbrechen
+        </MudButton>
+        <MudButton OnClick="Submit" Variant="Variant.Filled" Color="Color.Primary">
+            <MudIcon Icon="@Icons.Material.Filled.Check" /> Auswählen
+        </MudButton>
     </DialogActions>
 </MudDialog>
-
-    
-       

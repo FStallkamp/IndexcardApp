@@ -1,67 +1,110 @@
-﻿@page "/{CategoryName}"
+﻿@page "/learn/{CategoryName?}"
 @inject NavigationManager NavigationManager
 @using System.Net.Http.Json
 @rendermode InteractiveServer
 @inject HttpClient httpClient
 @using MudBlazor
 
-<!-- Anzeige der Kategorie und Kartenfortschritt rechts oben -->
-<MudText Typo="Typo.h6" Align="Align.Right" Style="position: absolute; right: 2%; top: 2%; font-size: 1.2rem; color: #6c757d;">
-    Kategorie @CategoryName
-</MudText>
-
-<MudText Typo="Typo.h6" Align="Align.Right" Style="position: absolute; right: 2%;margin-top: 0.5%; top: 7%; font-size: 1.0rem; color: #28a745;">
-    Du musst noch @cardCounter Karten lernen
-</MudText>
-
-<!-- Lernkartenbereich -->
-<div style="margin-top: 0%; padding: 2% 5%;">
-    @if (cardCounter != 0)
-    {
-        @if (StepTwo)
+<MudContainer MaxWidth="MaxWidth.Medium" Style="margin-top: 2rem;">
+    <MudText Typo="Typo.h6" Align="Align.Right" Style="font-size: 1.2rem; color: #6c757d;">
+        @if (CategoryName == "all")
         {
-            <div>
-                <MudText Typo="Typo.h4">Titel der Karte: @currentCard.Name</MudText>
-                <br />
-                <MudText Typo="Typo.h5">Korrekte Lösung: </MudText> <MudText Style="color: #28a745;" Typo="Typo.h5">@currentCard.Description</MudText>
-                <br />
-                <MudTextField T="string" Disabled Label="Keine Eingabe" Variant="Variant.Filled" Size="Size.Large" @bind-Value="inputUser" AutoGrow HelperText="Deine Lösung:" />
-                <br />
-                <div style="display: flex; justify-content: flex-start; margin-top: 10px;">
-                    <MudButton Color="Color.Success" Variant="Variant.Filled" Size="Size.Large" OnClick="@(() => CorrectAnswer(currentCard))">
-                        Richtig
-                    </MudButton>
-                    <MudButton Style="margin-left: 2.5%" Color="Color.Error" Variant="Variant.Filled" Size="Size.Large" OnClick="WrongAnswer">
-                        Falsch
-                    </MudButton>
-                </div>
-            </div>
+            <text>Lernt alle KarteiKarten</text>
         }
         else
         {
-            <div>
-                <MudText Typo="Typo.h4">Titel der Karte: @currentCard.Name</MudText>
-                <MudDivider />
-                <MudTextField T="string" Typo="Typo.h5" Label="Deine Lösung" Variant="Variant.Filled" Size="Size.Large" @bind-Value="inputUser" AutoGrow HelperText="Gib hier deine Lösung ein" />
-                <br />
+            <text>Kategorie @CategoryName</text>
+        }
+    </MudText>
+
+    @if (CategoryName == "all")
+    {
+        <MudText Typo="Typo.h6" Align="Align.Right" Style="margin-top: 0.5rem; font-size: 1.0rem; color: #28a745;">
+            @if (currentCard != null)
+            {
+                <text>Momentane Kategorie: <u>@currentCategoryName</u></text>
+            }
+        </MudText>
+    }
+
+    <MudText Typo="Typo.h6" Align="Align.Right" Style="margin-top: 0.5rem; font-size: 1.0rem; color: #28a745;">
+        <text>Du musst noch @cardCounter Karten lernen</text>
+    </MudText>
+
+    <MudPaper Style="padding: 2rem; margin-top: 1rem;">
+        @if (cardCounter != 0)
+        {
+            @if (StepTwo)
+            {
+                <MudText Typo="Typo.h4">Titel der Karte:</MudText>
+                <MudText Typo="Typo.h5"><text>@(SplitAt(currentCard.Name, 42, 52))</text></MudText>
+                <MudDivider Style="margin: 1rem 0;" />
+                <MudText Typo="Typo.h5">Korrekte Lösung:</MudText>
+                <MudText Typo="Typo.h5" Style="color: #28a745;"><text>@(SplitAt(currentCard.Description, 42, 52))</text></MudText>
+                <MudDivider Style="margin: 1rem 0;" />
+                <MudTextField T="string" Disabled Label="Keine Eingabe" Variant="Variant.Filled" Size="Size.Large" @bind-Value="inputUser" AutoGrow />
+                <MudDivider Style="margin: 1rem 0;" />
+                <MudButton Color="Color.Success" Variant="Variant.Filled" Size="Size.Large" OnClick="@(() => CorrectAnswer(currentCard))">
+                    Richtig
+                </MudButton>
+                <MudButton Style="margin-left: 1rem;" Color="Color.Error" Variant="Variant.Filled" Size="Size.Large" OnClick="WrongAnswer">
+                    Falsch
+                </MudButton>
+            }
+            else
+            {
+                <MudText Typo="Typo.h4">Titel der Karte:</MudText>
+                <MudText Typo="Typo.h5"><text>@(SplitAt(currentCard.Name, 42, 52))</text></MudText>
+                <MudDivider Style="margin: 1rem 0;" />
+                <MudTextField T="string" Typo="Typo.h5" Label="Deine Lösung" Variant="Variant.Filled" Size="Size.Large" @bind-Value="inputUser" AutoGrow />
+                <MudDivider Style="margin: 1rem 0;" />
                 <MudButton Color="Color.Inherit" Variant="Variant.Filled" Size="Size.Large" OnClick="@(() => StartStepTwo(randomOrder))">
                     Weiter
                 </MudButton>
-            </div>
+            }
         }
-    }
-    else
-    {
-        <div>
-            <MudText Typo="Typo.h5" Align="Align.Left">Du hast erfolgreich alle Karten gelernt</MudText>
-            <br />
+        else
+        {
+            <MudText Typo="Typo.h5" Align="Align.Left">
+                @if (CategoryName == "all")
+                {
+                    <text>Du hast erfolgreich alle Karten gelernt</text>
+                }
+                else
+                {
+                    <text>Du hast erfolgreich alle Karten der Kategorie @CategoryName gelernt</text>
+                }
+            </MudText>
             <MudButton Color="Color.Success" Variant="Variant.Filled" Size="Size.Large" Href="/">
                 Zurück zur Homepage
             </MudButton>
-        </div>
-    }
-</div>
-@code {
+        }
+    </MudPaper>
+</MudContainer>
 
+@code {
+    public MarkupString SplitAt(string str, int interval, int maxInterval)
+    {
+        if (string.IsNullOrEmpty(str) || interval <= 0 || maxInterval <= 0)
+            return new MarkupString(str);
+
+        var result = new List<string>();
+        int start = 0;
+
+        while (start < str.Length)
+        {
+            int end = Math.Min(start + interval, str.Length);
+            int nextSpace = str.IndexOf(' ', end);
+
+            if (nextSpace == -1 || nextSpace > start + maxInterval)
+            {
+                nextSpace = Math.Min(start + maxInterval, str.Length);
+            }
+
+            result.Add(str.Substring(start, nextSpace - start));
+            start = nextSpace + 1;
+        }
+
+        return new MarkupString(string.Join("<br />", result));
+    }
 }
-    

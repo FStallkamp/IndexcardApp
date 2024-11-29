@@ -1,10 +1,13 @@
 ﻿@page "/Error"
 @using System.Diagnostics
+@inject NavigationManager NavigationManager
 
 <PageTitle>Error</PageTitle>
 
-<h1 class="text-danger">Error.</h1>
-<h2 class="text-danger">An error occurred while processing your request.</h2>
+<h1 class="text-danger">Seite nicht gefunden</h1>
+<h2 class="text-danger">Die angeforderte Seite existiert nicht.</h2>
+
+<button @onclick="NavigateToHome" class="btn btn-primary">Zurück zur Hauptseite</button>
 
 @if (ShowRequestId)
 {
@@ -13,18 +16,18 @@
     </p>
 }
 
-<h3>Development Mode</h3>
+<h3>Entwicklungsmodus</h3>
 <p>
-    Swapping to <strong>Development</strong> environment will display more detailed information about the error that occurred.
+    Wechseln zum <strong>Entwicklungs</strong>-Modus zeigt detailliertere Informationen über den aufgetretenen Fehler an.
 </p>
 <p>
-    <strong>The Development environment shouldn't be enabled for deployed applications.</strong>
-    It can result in displaying sensitive information from exceptions to end users.
-    For local debugging, enable the <strong>Development</strong> environment by setting the <strong>ASPNETCORE_ENVIRONMENT</strong> environment variable to <strong>Development</strong>
-    and restarting the app.
+    <strong>Der Entwicklungsmodus sollte nicht für bereitgestellte Anwendungen aktiviert sein.</strong>
+    Dies kann dazu führen, dass sensible Informationen von Ausnahmen an Endbenutzer angezeigt werden.
+    Für lokales Debugging, aktiviere den <strong>Entwicklungs</strong>-Modus, indem du die <strong>ASPNETCORE_ENVIRONMENT</strong>-Umgebungsvariable auf <strong>Development</strong> setzt
+    und die App neu startest.
 </p>
 
-@code{
+@code {
     [CascadingParameter]
     private HttpContext? HttpContext { get; set; }
 
@@ -33,4 +36,9 @@
 
     protected override void OnInitialized() =>
         RequestId = Activity.Current?.Id ?? HttpContext?.TraceIdentifier;
+
+    private void NavigateToHome()
+    {
+        NavigationManager.NavigateTo("/");
+    }
 }
