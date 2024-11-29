@@ -8,10 +8,10 @@
     <DialogContent>
         <MudGrid Class="fixed-width-grid">
             <MudItem xs="12" sm="12" Style="margin-top: 1rem; margin-left: 85px; margin-right: 85px" Class="fixed-width-grid">
-                <MudTextField T="string" @bind-Value="@Title" Label="Titel der Karteikarte eingeben" Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.Title"></MudTextField>
+                <MudTextField T="string" @bind-Value="@Title" Label="Titel der Karteikarte eingeben" Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.Title" Required="true"></MudTextField>
             </MudItem>
             <MudItem xs="12" sm="12" Style="margin-top: 1rem; margin-left: 85px; margin-right: 85px" Class="fixed-width-grid">
-                <MudTextField T="string" @bind-Value="@Description" Label="Beschreibung der Karteikarte eingeben" Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.Description"></MudTextField>
+                <MudTextField T="string" @bind-Value="@Description" Label="Beschreibung der Karteikarte eingeben" Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.Description" Required="true"></MudTextField>
             </MudItem>
         </MudGrid>
     </DialogContent>

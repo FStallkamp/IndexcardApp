@@ -12,9 +12,11 @@
         </MudCardHeader>
         <MudCardContent>
             <MudButton Variant="Variant.Filled" Size="Size.Large" Color="Color.Success" Class="mr-2" OnClick="NavigateToRandomLearnPage">
+                <MudIcon Icon="@Icons.Material.Filled.School" Class="mr-1" />
                 Lernen
             </MudButton>
             <MudButton Href="new" Variant="Variant.Filled" Size="Size.Large" Color="Color.Primary">
+                <MudIcon Icon="@Icons.Material.Filled.Add" Class="mr-1" />
                 Kategorie erstellen
             </MudButton>
         </MudCardContent>
@@ -24,7 +26,8 @@
         @if (_categories == null)
         {
             <MudItem xs="12">
-                <MudText Typo="Typo.h6">Lade Kategorien...</MudText>
+                <MudProgressCircular Color="Color.Primary" Indeterminate="true" />
+                <MudText Typo="Typo.h6" Class="ml-2">Lade Kategorien...</MudText>
             </MudItem>
         }
         else if (!_categories.Any())
@@ -68,17 +71,16 @@
     .header-card {
         padding: 16px;
         background-color: #f5f5f5;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     }
 
     .card-equal-height {
         height: 100%;
         display: flex;
         flex-direction: column;
+        justify-content: space-between;
     }
-
-        .card-equal-height .MudCardContent {
-            flex-grow: 1;
-        }
 
     .truncate {
         white-space: nowrap;
@@ -95,11 +97,14 @@
     }
 
     .category-card {
-        transition: background-color 1.0s ease;
+        transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     }
 
         .category-card:hover {
             background-color: #e0e0e0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
 </style>
 
