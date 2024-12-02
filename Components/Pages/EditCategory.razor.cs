@@ -1,5 +1,6 @@
 ﻿using IndexCardWebpage.Components.Dialogs;
 using Microsoft.AspNetCore.Components;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using MudBlazor;
 using static MudBlazor.CategoryTypes;
 namespace IndexCardWebpage.Components.Pages
@@ -68,7 +69,7 @@ namespace IndexCardWebpage.Components.Pages
             }
 
             // Nach Speichern zum Hauptbildschirm
-            NavigationManager.NavigateTo("/");
+            NavigationManager.NavigateTo("/?refresh=true");
         }
 
         private async Task Cancel()
@@ -86,7 +87,7 @@ namespace IndexCardWebpage.Components.Pages
             else
             {
                 // Keine Änderungen -> Navigieren
-                NavigationManager.NavigateTo("/");
+                NavigationManager.NavigateTo("/?refresh=true");
             }
         }
 
@@ -102,7 +103,7 @@ namespace IndexCardWebpage.Components.Pages
             // 
 
             StateHasChanged();
-            NavigationManager.NavigateTo("/");
+            NavigationManager.NavigateTo("/?refresh=true");
         }
 
         private async Task OpenDialog()

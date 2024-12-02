@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Components;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Microsoft.JSInterop;
 using MudBlazor;
 using System;
@@ -30,6 +31,14 @@ namespace IndexCardWebpage.Components.Pages
 
         protected override async Task OnInitializedAsync()
         {
+            var uri = NavigationManager.ToAbsoluteUri(NavigationManager.Uri);
+            var query = Microsoft.AspNetCore.WebUtilities.QueryHelpers.ParseQuery(uri.Query);
+
+            if (query.ContainsKey("refresh"))
+            {
+                var newUri = Microsoft.AspNetCore.Components.NavigationManagerExtensions.GetUriWithQueryParameter(NavigationManager, "refresh", (string)null);
+                NavigationManager.NavigateTo(newUri, forceLoad: true);
+            }
             _localCards = await IndexCardService.GetAllIndexCardsAsync();
             try
             {

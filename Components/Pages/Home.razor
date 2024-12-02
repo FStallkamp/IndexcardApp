@@ -7,22 +7,20 @@
 
 @if (DeleteCategoryBool)
 {
-    <div class="popup-content" id="popup" style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 300px; padding: 20px; background-color: white; border: 1px solid #ccc; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); text-align: center;">
-        <div class="popup-content">
-            <p>Bist du sicher das du diese Kategorie und alle zugehörigen Karten löschen möchtest?</p>
-            <MudButton Variant="Variant.Outlined" Color="Color.Error" OnClick="DeleteCategory">Löschen</MudButton>
-            <MudButton Variant="Variant.Outlined" Color="Color.Warning" OnClick="ClosePopUp">Abbrechen</MudButton>
-        </div>
+    <div class="overlay" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5); z-index: 999;"></div>
+    <div class="popup-content" id="popup" style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 300px; padding: 20px; background-color: #fff; border-radius: 8px; border: 1px solid #ccc; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); text-align: center; z-index: 1000;">
+        <p>Bist du sicher, dass du diese Karte löschen möchtest?</p>
+        <MudButton Variant="Variant.Outlined" Color="Color.Error" OnClick="DeleteCategory">Löschen</MudButton>
+        <MudButton Variant="Variant.Outlined" Color="Color.Warning" OnClick="ClosePopUp">Abbrechen</MudButton>
     </div>
 }
 
 @if (TimeError)
 {
-    <div class="popup-content" id="popup" style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 300px; padding: 20px; background-color: white; border: 1px solid #ccc; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); text-align: center;">
-        <div class="popup-content">
-            <p>Du musst mindestens @DeleteTimer Sekunden warten, bevor du erneut eine Kategorie löschen kannst!</p>
-            <MudButton Variant="Variant.Outlined" Color="Color.Success" OnClick="ClosePopUp">Verstanden</MudButton>
-        </div>
+    <div class="overlay" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5); z-index: 999;"></div>
+    <div class="popup-content" id="popup" style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 300px; padding: 20px; background-color: #fff; border-radius: 8px; border: 1px solid #ccc; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); text-align: center; z-index: 1000;">
+        <p>Du musst mindestens @DeleteTimer Sekunden warten, bevor du erneut eine Kategorie löschen kannst!</p>
+        <MudButton Variant="Variant.Outlined" Color="Color.Success" OnClick="ClosePopUp">Verstanden</MudButton>
     </div>
 }
 
@@ -130,4 +128,30 @@
             background-color: #e0e0e0;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
+
+    .popup-content {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 300px;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 8px;
+        border: 1px solid #ccc;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        text-align: center;
+        z-index: 1000;
+    }
+
+    .overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 999;
+    }
+
 </style>
