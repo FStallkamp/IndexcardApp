@@ -177,7 +177,7 @@ namespace IndexCardWebpage.Components.Pages
         private async Task CheckCategoryName()
         {
             var categories = await CardCategoriesService.GetAllCategoriesAsync();
-            CategoryNameExists = categories.Any(c => c.Name.Equals(Category.Name, StringComparison.OrdinalIgnoreCase));
+            CategoryNameExists = categories.Any(c => c.Name.Equals(Category.Name, StringComparison.OrdinalIgnoreCase) && c.KategorieId != Category.KategorieId);
         }
     }
 }
