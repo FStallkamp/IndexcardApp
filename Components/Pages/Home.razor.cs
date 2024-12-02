@@ -54,14 +54,6 @@ namespace IndexCardWebpage.Components.Pages
         private async Task DeleteCategory(CardCategories categorie)
         {
 
-            if ((DateTime.Now - _lastDeleteAttempt).TotalSeconds < DeleteTimer)
-            {
-                TimeError = true;
-                StateHasChanged(); // UI aktualisieren
-                return;
-            }
-
-            _lastDeleteAttempt = DateTime.Now;
 
             DeletableObject = categorie;
             try
@@ -73,6 +65,7 @@ namespace IndexCardWebpage.Components.Pages
                         DeletableCards.Add(card);
                     }
                 }
+
                 DeleteCategoryBool = true;
             }
             catch
@@ -115,6 +108,16 @@ namespace IndexCardWebpage.Components.Pages
 
         private async void DeleteCategory()
         {
+
+            if ((DateTime.Now - _lastDeleteAttempt).TotalSeconds < DeleteTimer)
+            {
+                TimeError = true;
+                StateHasChanged(); // UI aktualisieren
+                return;
+            }
+
+            _lastDeleteAttempt = DateTime.Now;
+
             try
             {
                 await CardCategoriesService.DeleteCategoryAsync(DeletableObject.KategorieId);
@@ -131,6 +134,7 @@ namespace IndexCardWebpage.Components.Pages
             {
                 Console.WriteLine("Fehler");
             }
+
         }
         private void ClosePopUp()
         {

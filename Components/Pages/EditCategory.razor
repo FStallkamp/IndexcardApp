@@ -5,28 +5,33 @@
 @inject HttpClient httpClient
 @using MudBlazor
 
-
 <h3>Kategorie bearbeiten: @Category?.Name</h3>
+
+<MudDialogProvider />
 
 @if (CardsError)
 {
-    <div class="popup-content" id="popup" style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 300px; padding: 20px; background-color: white; border: 1px solid #ccc; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); text-align: center;">
-        <div class="popup-content">
+    <MudDialog>
+        <DialogContent>
             <p>Es gibt ungespeicherte Änderungen. Möchten Sie die Änderungen speichern oder verwerfen?</p>
+        </DialogContent>
+        <DialogActions>
             <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="ConfirmSave">Speichern</MudButton>
             <MudButton Variant="Variant.Outlined" Color="Color.Secondary" OnClick="DiscardChanges">Verwerfen</MudButton>
-        </div>
-    </div>
+        </DialogActions>
+    </MudDialog>
 }
 
 @if (busyPopup)
 {
-    <div class="popup-content" id="popup" style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 300px; padding: 20px; background-color: white; border: 1px solid #ccc; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); text-align: center;">
-        <div class="popup-content">
+    <MudDialog>
+        <DialogContent>
             <p>Du kannst maximal eine Änderung gleichzeitig öffnen</p>
+        </DialogContent>
+        <DialogActions>
             <MudButton Variant="Variant.Outlined" Color="Color.Secondary" OnClick="ClosePopUp">Okay</MudButton>
-        </div>
-    </div>
+        </DialogActions>
+    </MudDialog>
 }
 
 @if (Category == null)
@@ -35,53 +40,56 @@
 }
 else
 {
-    <MudTextField T="string" @bind-Value="Category.Name" Label="Name der Kategorie" />
-    <MudTextField T="string" @bind-Value="Category.Beschreibung" Label="Beschreibung der Kategorie" />
-    <MudSimpleTable Hover="true" Bordered="true" Style="overflow-x: auto;">
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Inhalt</th>
-                <th>Aktion</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var x in indexCards)
-            {
-                if (x.KategorieId == Category.KategorieId)
+    <MudTextField T="string" @bind-Value="Category.Name" Label="Name der Kategorie" Typo="Typo.h5" Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.Title" Required="true" RequiredError="Der Kategoriename darf nicht leer sein." />
+    <MudTextField T="string" @bind-Value="Category.Beschreibung" Label="Beschreibung der Kategorie" Typo="Typo.h5" Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.Description" />
+    <MudPaper Elevation="4" Class="mt-4 p-4">
+        <MudSimpleTable Hover="true" Bordered="true" Style="overflow-x: auto;">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Inhalt</th>
+                    <th>Aktion</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var x in indexCards)
                 {
-                    <tr>
-                        @if (ShowEditPopUps.ContainsKey(x.Id) && ShowEditPopUps[x.Id])
-                        {
+                    if (x.KategorieId == Category.KategorieId)
+                    {
+                        <tr>
+                            @if (ShowEditPopUps.ContainsKey(x.Id) && ShowEditPopUps[x.Id])
+                            {
                                 <td><MudTextField T="string" @bind-Value="x.Name" Label="Kartentitel eingeben"></MudTextField></td>
                                 <td><MudTextField T="string" @bind-Value="x.Description" Label="Kartenbeschreibung eingeben"></MudTextField></td>
-                            if(busy)
+                                if (busy)
+                                {
+                                    <td>
+                                        <MudButton Variant="Variant.Filled" OnClick="@(() => SaveCard(x))" Color="Color.Warning">Speichern</MudButton>
+                                        <MudButton Variant="Variant.Filled" OnClick="@(() => CancelEdit(x))" Color="Color.Error">Abbrechen</MudButton>
+                                    </td>
+                                }
+                            }
+                            else
                             {
+                                <td>@x.Name</td>
+                                <td>@x.Description</td>
                                 <td>
-                                    <MudButton Variant="Variant.Filled" OnClick="@(() => SaveCard(x))" Color="Color.Warning">Speichern</MudButton>
-                                    <MudButton Variant="Variant.Filled" OnClick="@(() => CancelEdit(x))" Color="Color.Error">Abbrechen</MudButton>
+                                    <MudButton Variant="Variant.Filled" OnClick="@(() => EditCard(x))" Color="Color.Tertiary">Edit</MudButton>
                                 </td>
                             }
-                        }
-                        else
-                        {
-                            <td>@x.Name</td>
-                            <td>@x.Description</td>
-                            <td>
-                                <MudButton Variant="Variant.Filled" OnClick="@(() => EditCard(x))" Color="Color.Tertiary">Edit</MudButton>
-                            </td>
-                        }
-                        
-                    </tr>
+                        </tr>
+                    }
                 }
-            }
+            </tbody>
+        </MudSimpleTable>
+    </MudPaper>
 
-
-        </tbody>
-    </MudSimpleTable>
-
-    <MudButton Color="Color.Primary" OnClick="SaveCategory">Speichern</MudButton>
-    <MudButton Color="Color.Secondary" OnClick="Cancel">Abbrechen</MudButton>
+    <MudButton Variant="Variant.Filled" OnClick="SaveCategory" Color="Color.Primary" Class="mt-4" Disabled="@(string.IsNullOrEmpty(Category.Name))">
+        <MudIcon Icon="@Icons.Material.Filled.Save" /> Speichern
+    </MudButton>
+    <MudButton Variant="Variant.Filled" OnClick="Cancel" Color="Color.Secondary" Class="mt-4">
+        <MudIcon Icon="@Icons.Material.Filled.Cancel" /> Abbrechen
+    </MudButton>
 }
 
 @code {
@@ -101,7 +109,7 @@ else
                 Description = card.Description,
                 KategorieId = card.KategorieId
             };
-        if(busy)
+        if (busy)
         {
             busyPopup = true;
             return;
@@ -123,7 +131,7 @@ else
         busyPopup = false;
         if (ShowEditPopUps.ContainsKey(card.Id))
         {
-            if(oldCard.Name != card.Name || oldCard.Description != card.Description)
+            if (oldCard.Name != card.Name || oldCard.Description != card.Description)
             {
                 card.Name = oldCard.Name;
                 card.Description = oldCard.Description;
@@ -143,7 +151,7 @@ else
         // Toggle the pop-up status
         if (ShowEditPopUps.ContainsKey(card.Id))
         {
-            if(oldCard != localCard)
+            if (oldCard != localCard)
             {
                 oldCard = null;
             }
@@ -153,7 +161,6 @@ else
         {
             ShowEditPopUps[card.Id] = true;
         }
-
 
         // Aktualisiere das Element in der Liste, falls notwendig
         // Blazor erkennt Änderungen automatisch, wenn das Element als Bindung vorhanden ist
@@ -167,5 +174,4 @@ else
         CardsError = false;
         busyPopup = false;
     }
-
 }
