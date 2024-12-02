@@ -11,28 +11,46 @@
 
 @if (CardsError)
 {
-    <MudDialog>
-        <DialogContent>
+    <div class="popup-content" id="popup" style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 300px; padding: 20px; background-color: white; border: 1px solid #ccc; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); text-align: center;">
+        <div class="popup-content">
             <p>Es gibt ungespeicherte Änderungen. Möchten Sie die Änderungen speichern oder verwerfen?</p>
-        </DialogContent>
-        <DialogActions>
             <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="ConfirmSave">Speichern</MudButton>
             <MudButton Variant="Variant.Outlined" Color="Color.Secondary" OnClick="DiscardChanges">Verwerfen</MudButton>
-        </DialogActions>
-    </MudDialog>
+        </div>
+    </div>
 }
 
 @if (busyPopup)
 {
-    <MudDialog>
-        <DialogContent>
+    <div class="popup-content" id="popup" style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 300px; padding: 20px; background-color: white; border: 1px solid #ccc; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); text-align: center;">
+        <div class="popup-content">
             <p>Du kannst maximal eine Änderung gleichzeitig öffnen</p>
-        </DialogContent>
-        <DialogActions>
             <MudButton Variant="Variant.Outlined" Color="Color.Secondary" OnClick="ClosePopUp">Okay</MudButton>
-        </DialogActions>
-    </MudDialog>
+        </div>
+    </div>
 }
+
+@if (TimeError)
+{
+    <div class="popup-content" id="popup" style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 300px; padding: 20px; background-color: white; border: 1px solid #ccc; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); text-align: center;">
+        <div class="popup-content">
+            <p>Du musst mindestens @DeleteTimer Sekunden warten, bevor du erneut eine Kategorie löschen kannst!</p>
+            <MudButton Variant="Variant.Outlined" Color="Color.Success" OnClick="ClosePopUp">Verstanden</MudButton>
+        </div>
+    </div>
+}
+
+@if (DeleteCardPopUp)
+{
+    <div class="popup-content" id="popup" style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 300px; padding: 20px; background-color: white; border: 1px solid #ccc; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); text-align: center;">
+        <div class="popup-content">
+            <p>Bist du sicher das du diese Karte löschen möchtest?</p>
+            <MudButton Variant="Variant.Outlined" Color="Color.Error" OnClick="CompleteDelete">Löschen</MudButton>
+            <MudButton Variant="Variant.Outlined" Color="Color.Warning" OnClick="ClosePopUp">Abbrechen</MudButton>
+        </div>
+    </div>
+}
+
 
 @if (Category == null)
 {
@@ -42,6 +60,11 @@ else
 {
     <MudTextField T="string" @bind-Value="Category.Name" Label="Name der Kategorie" Typo="Typo.h5" Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.Title" Required="true" RequiredError="Der Kategoriename darf nicht leer sein." />
     <MudTextField T="string" @bind-Value="Category.Beschreibung" Label="Beschreibung der Kategorie" Typo="Typo.h5" Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.Description" />
+
+    <MudButton Variant="Variant.Filled" OnClick="OpenDialog" Color="Color.Primary" Class="mt-2">
+        <MudIcon Icon="@Icons.Material.Filled.Add" /> Erstellen einer Karteikarte
+    </MudButton>
+
     <MudPaper Elevation="4" Class="mt-4 p-4">
         <MudSimpleTable Hover="true" Bordered="true" Style="overflow-x: auto;">
             <thead>
@@ -75,6 +98,7 @@ else
                                 <td>@x.Description</td>
                                 <td>
                                     <MudButton Variant="Variant.Filled" OnClick="@(() => EditCard(x))" Color="Color.Tertiary">Edit</MudButton>
+                                    <MudButton Variant="Variant.Filled" OnClick="@(() => DeleteCard(x))" Color="Color.Tertiary">Delete</MudButton>
                                 </td>
                             }
                         </tr>
@@ -173,5 +197,7 @@ else
     {
         CardsError = false;
         busyPopup = false;
+        DeleteCardPopUp = false;
+        TimeError = false;
     }
 }

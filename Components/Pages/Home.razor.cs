@@ -16,6 +16,7 @@ namespace IndexCardWebpage.Components.Pages
 
         private List<IndexCard> _cards = new List<IndexCard>();
         private List<IndexCard> DeletableCards = new List<IndexCard>();
+        private List<IndexCard> _localCards = new List<IndexCard>();
         private CardCategories DeletableObject = new CardCategories();
         private DateTime _lastDeleteAttempt = DateTime.MinValue;
         private bool TimeError = false;
@@ -29,6 +30,7 @@ namespace IndexCardWebpage.Components.Pages
 
         protected override async Task OnInitializedAsync()
         {
+            _localCards = await IndexCardService.GetAllIndexCardsAsync();
             try
             {
                 // Lade die Kategorien
@@ -58,7 +60,7 @@ namespace IndexCardWebpage.Components.Pages
             DeletableObject = categorie;
             try
             {
-                foreach (var card in _cards)
+                foreach (var card in _localCards)
                 {
                     if (DeletableObject.KategorieId == card.KategorieId)
                     {

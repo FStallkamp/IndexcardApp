@@ -1,15 +1,23 @@
-﻿using Microsoft.AspNetCore.Components;
+﻿using IndexCardWebpage.Components.Dialogs;
+using Microsoft.AspNetCore.Components;
+using MudBlazor;
 using static MudBlazor.CategoryTypes;
 namespace IndexCardWebpage.Components.Pages
 {
     public partial class EditCategory
     {
+        [Inject] private IDialogService DialogService { get; set; }
         [Inject] CardCategoriesService CardCategoriesService { get; set; }
         [Inject] IndexCardService IndexCardService { get; set; }
 
         [Parameter]
         public string CategoryName { get; set; }
         private bool CardsError = false;
+        private bool TimeError = false;
+        private bool DeleteCardPopUp = false;
+        private int DeleteTimer = 10;
+        private DateTime _lastDeleteAttempt = DateTime.MinValue;
+        private List<IndexCard> DeletableCards = new List<IndexCard>();
         private List<IndexCard> indexCards;
         private CardCategories Category;
         private List<IndexCard> localCards = new List<IndexCard>();
@@ -95,6 +103,72 @@ namespace IndexCardWebpage.Components.Pages
             NavigationManager.NavigateTo("/");
         }
 
+        private async Task OpenDialog()
+        {
+            var parameters = new DialogParameters
+            {
+                { "KatID", Category.KategorieId }  // Übergibt die KategorieId an den Dialog
+            };
+            var options = new DialogOptions { CloseOnEscapeKey = true, CloseButton = true };
+            var dialog = await DialogService.ShowAsync<NewCardDialog>("Neue Kartei-Karte", parameters, options);
+            var result = await dialog.Result;
 
+            if (!result.Canceled)
+            {
+                var newCard = (IndexCard)result.Data;
+                if (newCard != null && !string.IsNullOrWhiteSpace(newCard.Name) && !string.IsNullOrWhiteSpace(newCard.Description))
+                {
+                    indexCards.Add(newCard); // Zum Beispiel: Jede Karte zu einer bestehenden Liste hinzufügen
+                }
+            }
+        }
+
+        private async Task DeleteCard(IndexCard card)
+        {
+            {
+                try
+                {
+                   
+                    DeletableCards.Add(card);
+
+                    DeleteCardPopUp = true;
+                }
+                catch
+                {
+                    Console.WriteLine("Kategorie nicht gefunden!");
+                }
+
+                //StateHasChanged();
+            }
+        }
+
+        private async void CompleteDelete()
+        {
+
+            if ((DateTime.Now - _lastDeleteAttempt).TotalSeconds < DeleteTimer)
+            {
+                TimeError = true;
+                StateHasChanged(); // UI aktualisieren
+                return;
+            }
+
+            _lastDeleteAttempt = DateTime.Now;
+
+            try
+            {
+                foreach (var card in DeletableCards)
+                {
+                    await IndexCardService.DeleteIndexCardAsync(card.KategorieId);
+                    indexCards.Remove(card);
+                }
+                DeleteCardPopUp = false;
+                StateHasChanged();
+            }
+            catch
+            {
+                Console.WriteLine("Fehler");
+            }
+
+        }
     }
 }
