@@ -16,7 +16,6 @@ namespace IndexCardWebpage.Components.Pages
 
         protected override async Task OnInitializedAsync()
         {
-            
             if (!string.IsNullOrEmpty(CategoryName))
             {
                 // Lade die Kategorie anhand des Namens oder anderer eindeutiger Eigenschaften
@@ -90,20 +89,10 @@ namespace IndexCardWebpage.Components.Pages
 
         private void DiscardChanges()
         {
-            // indexCards vollständig durch eine Kopie von localCards ersetzen
-            indexCards = localCards.Select(card => new IndexCard
-            {
-                Id = card.Id,
-                Name = card.Name,
-                Description = card.Description,
-                KategorieId = card.KategorieId
-            }).ToList();
-
-            // Popup schließen (falls verwendet)
-            CardsError = false;
-
-            // UI aktualisieren
+            // 
+           
             StateHasChanged();
+            NavigationManager.NavigateTo("/");
         }
 
 

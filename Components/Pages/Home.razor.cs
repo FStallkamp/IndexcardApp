@@ -11,9 +11,10 @@ namespace IndexCardWebpage.Components.Pages
 {
     public partial class Home
     {
-        [Inject]
-        CardCategoriesService CardCategoriesService { get; set; }
+        [Inject] CardCategoriesService CardCategoriesService { get; set; }
+        [Inject] IndexCardService IndexCardService { get; set; } 
 
+        private List<IndexCard> _cards = new List<IndexCard>();
         public Home()
         {
         }

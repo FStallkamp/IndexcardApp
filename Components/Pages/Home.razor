@@ -59,6 +59,9 @@
                             <MudButton Color="Color.Warning" OnClick="@(() => EditCategory(category))">
                                 Bearbeiten
                             </MudButton>
+                            <MudButton Color="Color.Error" OnClick="@(() => DeleteCategory(category))">
+                                Entfernen
+                            </MudButton>
                         </MudCardActions>
                     </MudCard>
                 </MudItem>
@@ -117,6 +120,25 @@
     private void EditCategory(CardCategories category)
     {
         NavigationManager.NavigateTo($"/edit/{category.Name}");
+    }
+
+    private async Task DeleteCategory(CardCategories categorie)
+    {
+
+        try
+        {
+            await CardCategoriesService.DeleteCategoryAsync(categorie.KategorieId);
+
+            foreach (var card in _cards)
+            {
+                await IndexCardService.DeleteIndexCardAsync(card.Id);
+                StateHasChanged();
+            }
+        }
+        catch
+        {
+            Console.WriteLine("Kategorie nicht gefunden!");
+        }
     }
 
     private void LearnCategory(CardCategories category)
