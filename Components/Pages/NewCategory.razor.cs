@@ -21,6 +21,7 @@ namespace IndexCardWebpage.Components.Pages
         private string Ersteller = "";
         private bool TitleMissed = false;
         private bool DescriptionMissed = false;
+        private bool TitleExists = false;
 
         protected override async Task OnInitializedAsync()
         {
@@ -78,6 +79,11 @@ namespace IndexCardWebpage.Components.Pages
             {
                 TitleMissed = true;
             }
+            else if (TitleExists)
+            {
+                // Fehler anzeigen, dass der Titel bereits existiert
+                return;
+            }
             else
             {
                 var category = new CardCategories
@@ -89,6 +95,12 @@ namespace IndexCardWebpage.Components.Pages
                 };
                 await AddCategoryAsync(category);
             }
+        }
+
+        private async Task CheckTitle()
+        {
+            var categories = await CardCategoriesService.GetAllCategoriesAsync();
+            TitleExists = categories.Any(c => c.Name.Equals(Title, StringComparison.OrdinalIgnoreCase));
         }
     }
 }

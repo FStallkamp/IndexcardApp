@@ -9,48 +9,43 @@
 
 <MudDialogProvider />
 
+@if (DeleteCardPopUp)
+{
+    <div class="overlay" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5); z-index: 999;"></div>
+    <div class="popup-content" id="popup" style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 300px; padding: 20px; background-color: #fff; border-radius: 8px; border: 1px solid #ccc; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); text-align: center; z-index: 1000;">
+        <p>Bist du sicher, dass du diese Karte löschen möchtest?</p>
+        <MudButton Variant="Variant.Outlined" Color="Color.Error" OnClick="CompleteDelete">Löschen</MudButton>
+        <MudButton Variant="Variant.Outlined" Color="Color.Warning" OnClick="ClosePopUp">Abbrechen</MudButton>
+    </div>
+}
+
 @if (CardsError)
 {
-    <div class="popup-content" id="popup" style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 300px; padding: 20px; background-color: white; border: 1px solid #ccc; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); text-align: center;">
-        <div class="popup-content">
-            <p>Es gibt ungespeicherte Änderungen. Möchten Sie die Änderungen speichern oder verwerfen?</p>
-            <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="ConfirmSave">Speichern</MudButton>
-            <MudButton Variant="Variant.Outlined" Color="Color.Secondary" OnClick="DiscardChanges">Verwerfen</MudButton>
-        </div>
+    <div class="overlay" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5); z-index: 999;"></div>
+    <div class="popup-content" id="popup" style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 300px; padding: 20px; background-color: #fff; border-radius: 8px; border: 1px solid #ccc; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); text-align: center; z-index: 1000;">
+        <p>Es gibt ungespeicherte Änderungen. Möchten Sie die Änderungen speichern oder verwerfen?</p>
+        <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="ConfirmSave">Speichern</MudButton>
+        <MudButton Variant="Variant.Outlined" Color="Color.Secondary" OnClick="DiscardChanges">Verwerfen</MudButton>
     </div>
 }
 
 @if (busyPopup)
 {
-    <div class="popup-content" id="popup" style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 300px; padding: 20px; background-color: white; border: 1px solid #ccc; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); text-align: center;">
-        <div class="popup-content">
-            <p>Du kannst maximal eine Änderung gleichzeitig öffnen</p>
-            <MudButton Variant="Variant.Outlined" Color="Color.Secondary" OnClick="ClosePopUp">Okay</MudButton>
-        </div>
+    <div class="overlay" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5); z-index: 999;"></div>
+    <div class="popup-content" id="popup" style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 300px; padding: 20px; background-color: #fff; border-radius: 8px; border: 1px solid #ccc; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); text-align: center; z-index: 1000;">
+        <p>Du kannst maximal eine Änderung gleichzeitig öffnen</p>
+        <MudButton Variant="Variant.Outlined" Color="Color.Secondary" OnClick="ClosePopUp">Okay</MudButton>
     </div>
 }
 
 @if (TimeError)
 {
-    <div class="popup-content" id="popup" style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 300px; padding: 20px; background-color: white; border: 1px solid #ccc; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); text-align: center;">
-        <div class="popup-content">
-            <p>Du musst mindestens @DeleteTimer Sekunden warten, bevor du erneut eine Kategorie löschen kannst!</p>
-            <MudButton Variant="Variant.Outlined" Color="Color.Success" OnClick="ClosePopUp">Verstanden</MudButton>
-        </div>
+    <div class="overlay" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5); z-index: 999;"></div>
+    <div class="popup-content" id="popup" style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 300px; padding: 20px; background-color: #fff; border-radius: 8px; border: 1px solid #ccc; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); text-align: center; z-index: 1000;">
+        <p>Du musst mindestens @DeleteTimer Sekunden warten, bevor du erneut eine Kategorie löschen kannst!</p>
+        <MudButton Variant="Variant.Outlined" Color="Color.Success" OnClick="ClosePopUp">Verstanden</MudButton>
     </div>
 }
-
-@if (DeleteCardPopUp)
-{
-    <div class="popup-content" id="popup" style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 300px; padding: 20px; background-color: white; border: 1px solid #ccc; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); text-align: center;">
-        <div class="popup-content">
-            <p>Bist du sicher das du diese Karte löschen möchtest?</p>
-            <MudButton Variant="Variant.Outlined" Color="Color.Error" OnClick="CompleteDelete">Löschen</MudButton>
-            <MudButton Variant="Variant.Outlined" Color="Color.Warning" OnClick="ClosePopUp">Abbrechen</MudButton>
-        </div>
-    </div>
-}
-
 
 @if (Category == null)
 {
@@ -58,10 +53,16 @@
 }
 else
 {
-    <MudTextField T="string" @bind-Value="Category.Name" Label="Name der Kategorie" Typo="Typo.h5" Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.Title" Required="true" RequiredError="Der Kategoriename darf nicht leer sein." />
+
+
+    <MudTextField T="string" @bind-Value="Category.Name" Label="Name der Kategorie" Typo="Typo.h5" Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.Title" Required="true" RequiredError="Der Kategoriename darf nicht leer sein." OnBlur="CheckCategoryName" />
+    @if (CategoryNameExists)
+    {
+        <MudText Typo="Typo.caption" Color="Color.Error">Dieser Kategoriename existiert bereits.</MudText>
+    }
     <MudTextField T="string" @bind-Value="Category.Beschreibung" Label="Beschreibung der Kategorie" Typo="Typo.h5" Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.Description" />
 
-    <MudButton Variant="Variant.Filled" OnClick="OpenDialog" Color="Color.Primary" Class="mt-2">
+    <MudButton Variant="Variant.Filled" OnClick="OpenDialog" Color="Color.Primary" Class="mb-2">
         <MudIcon Icon="@Icons.Material.Filled.Add" /> Erstellen einer Karteikarte
     </MudButton>
 
@@ -98,7 +99,7 @@ else
                                 <td>@x.Description</td>
                                 <td>
                                     <MudButton Variant="Variant.Filled" OnClick="@(() => EditCard(x))" Color="Color.Tertiary">Edit</MudButton>
-                                    <MudButton Variant="Variant.Filled" OnClick="@(() => DeleteCard(x))" Color="Color.Tertiary">Delete</MudButton>
+                                    <MudButton Variant="Variant.Filled" OnClick="@(() => DeleteCard(x))" Color="Color.Error">Delete</MudButton>
                                 </td>
                             }
                         </tr>
@@ -108,7 +109,7 @@ else
         </MudSimpleTable>
     </MudPaper>
 
-    <MudButton Variant="Variant.Filled" OnClick="SaveCategory" Color="Color.Primary" Class="mt-4" Disabled="@(string.IsNullOrEmpty(Category.Name))">
+    <MudButton Variant="Variant.Filled" OnClick="SaveCategory" Color="Color.Primary" Class="mt-4" Disabled="@(string.IsNullOrEmpty(Category.Name) || CategoryNameExists)">
         <MudIcon Icon="@Icons.Material.Filled.Save" /> Speichern
     </MudButton>
     <MudButton Variant="Variant.Filled" OnClick="Cancel" Color="Color.Secondary" Class="mt-4">
@@ -168,7 +169,7 @@ else
         }
         StateHasChanged();
     }
-
+        
     private async Task SaveCard(IndexCard card)
     {
         busy = false;
@@ -199,5 +200,6 @@ else
         busyPopup = false;
         DeleteCardPopUp = false;
         TimeError = false;
+        StateHasChanged();
     }
 }

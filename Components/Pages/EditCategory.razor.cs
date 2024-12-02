@@ -22,6 +22,8 @@ namespace IndexCardWebpage.Components.Pages
         private CardCategories Category;
         private List<IndexCard> localCards = new List<IndexCard>();
 
+        private bool CategoryNameExists = false;
+
         protected override async Task OnInitializedAsync()
         {
             if (!string.IsNullOrEmpty(CategoryName))
@@ -38,7 +40,7 @@ namespace IndexCardWebpage.Components.Pages
 
             }
             var cards = await IndexCardService.GetAllIndexCardsAsync();
-           
+
 
             // localCards ebenfalls als Kopie initialisieren
             localCards = indexCards.Select(card => new IndexCard
@@ -75,7 +77,7 @@ namespace IndexCardWebpage.Components.Pages
             bool hasChanges = localCards.Any(c =>
                 c.Name != indexCards.FirstOrDefault(ic => ic.Id == c.Id)?.Name ||
                 c.Description != indexCards.FirstOrDefault(ic => ic.Id == c.Id)?.Description);
-           
+
             if (hasChanges)
             {
                 // Popup anzeigen
@@ -98,7 +100,7 @@ namespace IndexCardWebpage.Components.Pages
         private void DiscardChanges()
         {
             // 
-           
+
             StateHasChanged();
             NavigationManager.NavigateTo("/");
         }
@@ -128,7 +130,7 @@ namespace IndexCardWebpage.Components.Pages
             {
                 try
                 {
-                   
+
                     DeletableCards.Add(card);
 
                     DeleteCardPopUp = true;
@@ -169,6 +171,12 @@ namespace IndexCardWebpage.Components.Pages
                 Console.WriteLine("Fehler");
             }
 
+        }
+
+        private async Task CheckCategoryName()
+        {
+            var categories = await CardCategoriesService.GetAllCategoriesAsync();
+            CategoryNameExists = categories.Any(c => c.Name.Equals(Category.Name, StringComparison.OrdinalIgnoreCase));
         }
     }
 }

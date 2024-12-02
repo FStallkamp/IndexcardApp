@@ -8,7 +8,11 @@
 
 <MudDialogProvider />
 
-<MudTextField T="string" @bind-Value="@Title" Label="Titel der Kategorie eingeben" Typo="Typo.h5" Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.Title" Required="true" RequiredError="Der Titel darf nicht leer sein." />
+<MudTextField T="string" @bind-Value="@Title" Label="Titel der Kategorie eingeben" Typo="Typo.h5" Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.Title" Required="true" RequiredError="Der Titel darf nicht leer sein." OnBlur="CheckTitle" />
+@if (TitleExists)
+{
+    <MudText Typo="Typo.caption" Color="Color.Error">Dieser Titel existiert bereits.</MudText>
+}
 <MudTextField T="string" @bind-Value="@Description" Label="Beschreibung der Kategorie eingeben" Typo="Typo.h5" Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.Description" />
 
 <MudButton Variant="Variant.Filled" OnClick="OpenDialog" Color="Color.Primary" Class="mt-2">
@@ -39,7 +43,7 @@
     </MudSimpleTable>
 </MudPaper>
 
-<MudButton Variant="Variant.Filled" Href="/" OnClick="@Save" Color="Color.Primary" Class="mt-4" Disabled="@(string.IsNullOrEmpty(Title))">
+<MudButton Variant="Variant.Filled" Href="/" OnClick="@Save" Color="Color.Primary" Class="mt-4" Disabled="@(string.IsNullOrEmpty(Title) || TitleExists)">
     <MudIcon Icon="@Icons.Material.Filled.Save" /> Speichern
 </MudButton>
 
